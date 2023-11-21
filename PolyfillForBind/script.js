@@ -3,15 +3,18 @@ let name={
     lastname:"Makhija"
 }
 
-let printName=function(state,hometown){
-    console.log(this.firstname+" "+this.lastname+" from "+state+","+hometown);
+let printName=function(hometown,city, country){
+    console.log(this.firstname+" "+this.lastname+" from "+hometown+","+city+","+country);
 }
 
-let print=printName.bind(name,"Gujarat");
-print("Ahmedabad");
+let print=printName.bind(name,"Sardarnagar","Ahmedabad");
+print("India");
 
 
-Function.prototype.mybind=function(...args){
+//polyfill for bind
+
+Function.prototype.mybind= function(...args){
+    //returns a function
     let obj=this;
     let params=args.slice(1);
     return function(...args2){
@@ -19,6 +22,29 @@ Function.prototype.mybind=function(...args){
     }
 }
 
-let print2=printName.mybind(name,"Gujarat");
-print2("Ahmedabad");
+let print2=printName.mybind(name,"Sardarnagar","Ahmedabad");
+print2("India")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
